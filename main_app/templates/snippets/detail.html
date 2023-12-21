@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="center margin-top">{{ snippet.title|lower}}</h1>
+
+<div class="detail-container margin-block">
+    <div class="detail">
+        <h3>Title</h3>
+        <div>{{ snippet.title }}</div>
+        <h3>Code Type</h3>
+        <div>{{ snippet.primary_code_type }}</div>
+        <h3>Description</h3>
+        <div>{{ snippet.description }}</div>
+
+    </div>
+
+    <div class="code-container">
+        <pre>
+            <code class="language-javascript" id="code-block">
+                <div>{{ snippet.code}}</div>
+            </code>
+        </pre>
+        <button class="copy-button" data-clipboard-target="#code-block">Copy Code</button>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new ClipboardJS('.copy-button');
+    });
+</script>
+
+
+{% endblock %}

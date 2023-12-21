@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="center" style="margin-top: 8vmin;">all snippets</h1>
+
+<div class="snippets" style="margin-block: 4vmin;">
+
+    {% for snippet in snippets %}
+
+    <div>
+        <span class="{{ snippet.title|lower }} title"><a href="{% url 'detail' snippet.id %}" style="color: white">{{ snippet.title }}</a></span>
+        <div class="code-type">{{ snippet.primary_code_type }}</div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
