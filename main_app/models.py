@@ -1,18 +1,15 @@
 from django.db import models
+from django.urls import reverse
 
 class Snippet(models.Model):
-    CODE_TYPE_CHOICES = [
-        ('html', 'HTML'),
-        ('css', 'CSS'),
-        ('js', 'JavaScript'),
-        ('python', 'Python'),
-        ('java', 'Java'),
-    ]
-
-    title = models.CharField(max_length=100)
-    primary_code_type = models.CharField(max_length=10, choices=CODE_TYPE_CHOICES)
-    description = models.TextField(default=' ')
-    code = models.TextField(default=' ')
+    title = models.CharField(max_length=100, default='untitled')
+    description = models.CharField(max_length=500)
+    html_code = models.TextField(default='<!-- html -->')
+    css_code = models.TextField(default='/* css */')
+    js_code = models.TextField(default='// js')
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'snippet_id': self.id})

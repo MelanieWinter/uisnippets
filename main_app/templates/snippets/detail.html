@@ -1,9 +1,64 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="center margin-top">{{ snippet.title|lower}}</h1>
+<div class="whole-form-container">
+    <div class="top-form-container">
+        <!-- #id_title -->
+        <div class="form-title">
+            <div>
+                <label for="{{ form.title.id_for_label }}" id="title-label">Title</label>
+                <div id="title_snippet">{{ snippet.title }}</div>
+            </div>
+            <div>
+                <label for="{{ form.description.id_for_label }}" id="description-label">Description</label>
+                <div id="description_snippet">{{ snippet.description }}</div>
+            </div>
+        </div>
+    </div>
 
-<div class="detail-container margin-block">
+    <div class="container">
+        <div class="left">
+            <!-- #id_html_code -->
+            <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
+            <div class="code-container">
+                <pre>
+                    <code class="language-javascript" id="code-block1">
+                        <div id="html_snippet">{{ snippet.html_code }}</div>
+                    </code>
+                </pre>
+                <button class="copy-button" data-clipboard-target="#code-block1">Copy Code</button>
+            </div>
+
+            <!-- #id_css_code -->
+            <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
+            <div class="code-container">
+                <pre>
+                    <code class="language-javascript" id="code-block2">
+                        <div id="css_snippet">{{ snippet.css_code }}</div>
+                    </code>
+                </pre>
+                <button class="copy-button" data-clipboard-target="#code-block2">Copy Code</button>
+            </div>
+            
+            <!-- id_js_code -->
+            <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
+            <div class="code-container">
+                <pre>
+                    <code class="language-javascript" id="code-block3">
+                        <div id="js_snippet">{{ snippet.js_code }}</div>
+                    </code>
+                </pre>
+                <button class="copy-button" data-clipboard-target="#code-block3">Copy Code</button>
+            </div>
+        </div>
+        <div class="right">
+            <label><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output_snippet"></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="detail-container margin-block">
     <div class="detail">
         <h3>Title</h3>
         <div>{{ snippet.title }}</div>
@@ -11,7 +66,6 @@
         <div>{{ snippet.primary_code_type }}</div>
         <h3>Description</h3>
         <div>{{ snippet.description }}</div>
-
     </div>
 
     <div class="code-container">
@@ -22,13 +76,26 @@
         </pre>
         <button class="copy-button" data-clipboard-target="#code-block">Copy Code</button>
     </div>
-</div>
-
+</div> -->
 
 <script>
+
+    const htmlSnippetEl = document.getElementById('html_snippet').textContent
+    const cssSnippetEl = document.getElementById('css_snippet').textContent
+    const jsSnippetEl = document.getElementById('js_snippet').textContent
+    const outputSnippetEl = document.getElementById('output_snippet')
+
+    function show() {
+        outputSnippetEl.contentDocument.body.innerHTML = htmlSnippetEl + '<style>' + cssSnippetEl + '</style>'
+        outputSnippetEl.contentWindow.eval(jsSnippetEl)
+    }
+
+    show()
+
     document.addEventListener('DOMContentLoaded', function () {
         new ClipboardJS('.copy-button');
     });
+
 </script>
 
 

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/fc377b8991.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="navbar-fixed">
@@ -28,6 +30,7 @@
             </ul>
             <ul class="right">
             <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'snippets_create' %}">Add a Snippet</a></li>
             <li><a href="{% url 'index' %}">Snippets</a></li>
             </ul>
         </div>

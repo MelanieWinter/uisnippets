@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Snippet
 
 
@@ -20,3 +21,8 @@ def snippets_detail(request, snippet_id):
     return render(request, 'snippets/detail.html', {
         'snippet': snippet
     })
+
+class SnippetCreate(CreateView):
+    model = Snippet
+    fields = '__all__'
+    # success_url = '/snippets/{snippet_id}'

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- <h1>Add a Snippet</h1> -->
+
+    <div class="whole-form-container">
+        <form action="" method="POST">
+        <div class="top-form-container">
+                <!-- #id_title -->
+                <div class="form-title">
+                    <div>
+                    <label for="{{ form.title.id_for_label }}" id="title-label">Title</label>
+                    {{ form.title }}
+                    </div>
+                    <div>
+                        <label for="{{ form.description.id_for_label }}" id="description-label">Description</label>
+                        {{form.description}}
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <input type="submit" value="Submit" class="btn white-text" id="submit-btn">
+                </div>
+        </div>
+    
+        <div class="container">
+            <div class="left">
+                    {% csrf_token %}
+                    <!-- #id_html_code -->
+                    <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
+                    {{ form.html_code }}
+    
+                    <!-- #id_css_code -->
+                    <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
+                    {{ form.css_code }}
+    
+                    <!-- id_js_code -->
+                    <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
+                    {{ form.js_code }}
+                </form>
+            </div>
+            <div class="right">
+                <label><i class="fa-solid fa-play"></i> Output</label>
+                <iframe id="output"></iframe>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+
+        const htmlEl = document.getElementById('id_html_code')
+        const cssEl = document.getElementById('id_css_code')
+        const jsEl = document.getElementById('id_js_code')
+        const output = document.getElementById('output')
+
+        htmlEl.addEventListener('keyup', function() {
+            run()
+        })
+        cssEl.addEventListener('keyup', function() {
+            run()
+        })
+        jsEl.addEventListener('keyup', function() {
+            run()
+        })
+
+        function run() {
+            let htmlVal = htmlEl.value
+            let cssVal = cssEl.value
+            let jsVal = jsEl.value
+
+            output.contentDocument.body.innerHTML = htmlVal + '<style>' + cssVal + '</style>'
+            output.contentWindow.eval(jsVal)
+        }
+
+        const selectEl = document.getElementById('id_primary_code_type')
+        M.FormSelect.init(selectEl)
+
+    </script>
+    
+{% endblock %}
+
+
