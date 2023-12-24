@@ -22,7 +22,7 @@
         </div>
     
         <div class="container">
-            <div class="left">
+            <div class="left-c">
                     {% csrf_token %}
                     <!-- #id_html_code -->
                     <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
@@ -37,7 +37,7 @@
                     {{form.js_code}}
                 </form>
             </div>
-            <div class="right">
+            <div class="right-c">
                 <label><i class="fa-solid fa-play"></i> Output</label>
                 <iframe id="output"></iframe>
             </div>

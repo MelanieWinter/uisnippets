@@ -17,7 +17,7 @@
     </div>
 
     <div class="container">
-        <div class="left">
+        <div class="left-c">
             <!-- #id_html_code -->
             <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
             <div class="code-container">
@@ -51,32 +51,12 @@
                 <button class="copy-button" data-clipboard-target="#code-block3">Copy Code</button>
             </div>
         </div>
-        <div class="right">
+        <div class="right-c">
             <label><i class="fa-solid fa-play"></i> Output</label>
             <iframe id="output_snippet"></iframe>
         </div>
     </div>
 </div>
-
-<!-- <div class="detail-container margin-block">
-    <div class="detail">
-        <h3>Title</h3>
-        <div>{{ snippet.title }}</div>
-        <h3>Code Type</h3>
-        <div>{{ snippet.primary_code_type }}</div>
-        <h3>Description</h3>
-        <div>{{ snippet.description }}</div>
-    </div>
-
-    <div class="code-container">
-        <pre>
-            <code class="language-javascript" id="code-block">
-                <div>{{ snippet.code}}</div>
-            </code>
-        </pre>
-        <button class="copy-button" data-clipboard-target="#code-block">Copy Code</button>
-    </div>
-</div> -->
 
 <script>
 

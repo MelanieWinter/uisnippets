@@ -1,16 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="center" style="margin-top: 8vmin;">all snippets</h1>
-
 <div class="snippets" style="margin-block: 4vmin;">
 
     {% for snippet in snippets %}
 
-    <style>{{ snippet.code }}</style>
-    <div>
-        <span class="{{ snippet.title|lower }} title"><a href="{% url 'detail' snippet.id %}" style="color: white">{{ snippet.title }}</a></span>
-        <div class="code-type">{{ snippet.primary_code_type }}</div>
+    <div class="snippet-preview">
+        <div class="preview-container">
+            <div class="preview">
+                <style>{{ snippet.css_code|safe }}</style>
+                {{ snippet.html_code|safe }}
+                <script>{{ snippet.js_code|safe }}</script>
+            </div>
+        </div>
+        <div class="tag-container">
+            <div class="tag-container-div">
+                <div class="tag">tag</div>
+                <div class="tag">tag</div>
+                <div class="tag">tag</div>
+            </div>
+            
+            <a href="{% url 'detail' snippet.id %}" class="title-tag"><div class="tag">Details: {{ snippet.title }}</div></a>
+        </div>
     </div>
 
     {% endfor %}
