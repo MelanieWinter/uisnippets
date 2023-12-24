@@ -6,21 +6,24 @@
     {% for snippet in snippets %}
 
     <div class="snippet-preview">
-        <div class="tag-container">
-            <div class="tag">tag</div>
-            <div class="tag">tag</div>
-            <div class="tag">tag</div>
-        </div>
-        <div class="preview-container">
-            <div class="preview">
-                <style>{{ snippet.css_code|safe }}</style>
-                {{ snippet.html_code|safe }}
-                <script>{{ snippet.js_code|safe }}</script>
+        <div class="all-buttons-container">
+            <div class="tag-buttons">
+                <div class="tag">tag</div>
+                <div class="tag">tag</div>
+                <div class="tag">tag</div>
+            </div>
+            <div class="details-button-container">
+                <a href="{% url 'detail' snippet.id %}" class="details-button"><div>{{ snippet.title }}</div></a>
             </div>
         </div>
-        <div class="details-button-container">
-            <a href="{% url 'detail' snippet.id %}" class="details-button"><div>{{ snippet.title }}</div></a>
-        </div>
+
+
+        <iframe class="preview" srcdoc="{{ snippet.html_code|safe }}">
+            <style>{{ snippet.css_code|safe }}</style>
+            <script>{{ snippet.js_code|safe }}</script>
+        </iframe>
+
+
     </div>
 
     {% endfor %}

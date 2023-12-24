@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="page-container">
+    <h1>Delete UI Element</h1>
+    <h4>Are you sure you want to delete <span>{{ object.title }}</span>?</h4>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Yes - Delete!" id="delete-button">
+        <a href="{% url 'detail' snippet.id %}" id="cancel-button">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}
