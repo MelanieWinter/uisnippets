@@ -14,6 +14,10 @@
                 <div id="description-snippet">{{ snippet.description }}</div>
             </div>
         </div>
+        <div class="form-buttons">
+            <a href="{% url 'snippets_update' snippet.id %}"><button id="edit-button">Edit</button></a>
+            <a href="{% url 'snippets_delete' snippet.id %}"><button id="delete-button">Delete</button></a>
+        </div>
     </div>
 
     <div class="container">
