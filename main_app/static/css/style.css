@@ -168,6 +168,10 @@ textarea {
     outline: 0;
 }
 
+#output-snippet {
+    height: 103%;
+}
+
 label i {
     margin-inline: 10px;
 }
