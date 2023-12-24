@@ -26,15 +26,15 @@
                     {% csrf_token %}
                     <!-- #id_html_code -->
                     <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
-                    {{ form.html_code }}
+                    {{form.html_code}}
     
                     <!-- #id_css_code -->
                     <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
-                    {{ form.css_code }}
+                    {{form.css_code}}
     
                     <!-- id_js_code -->
                     <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
-                    {{ form.js_code }}
+                    {{form.js_code}}
                 </form>
             </div>
             <div class="right">
@@ -48,47 +48,52 @@
 
     <script>
         // HTML
-        const htmleditor = CodeMirror.fromTextArea(document.getElementById("id_html_code"), {
+        const htmlEditor = CodeMirror.fromTextArea(document.getElementById("id_html_code"), {
             mode: "xml",
             lineNumbers: true,
             theme: 'monokai',
-            autoCloseTags: true
+            autoCloseTags: true,
+            autoCloseBrackets: true,
+            extraKeys: { "Ctrl-Space": "autocomplete" }
         });
 
         // CSS
         const cssEditor = CodeMirror.fromTextArea(document.getElementById("id_css_code"), {
             mode: "css",
             lineNumbers: true,
-            theme: 'monokai'
+            autoCloseBrackets: true,
+            theme: 'monokai',
+            extraKeys: { "Ctrl-Space": "autocomplete" }
         });
 
         // JavaScript
         const jsEditor = CodeMirror.fromTextArea(document.getElementById("id_js_code"), {
             mode: "javascript",
             lineNumbers: true,
-            theme: 'monokai'
+            autoCloseBrackets: true,
+            theme: 'monokai',
+            extraKeys: { "Ctrl-Space": "autocomplete" }
         });
 
-        const output = document.getElementById('output')
+        // Event listeners for user input
+        htmlEditor.on("change", run);
+        cssEditor.on("change", run);
+        jsEditor.on("change", run);
 
-        // htmlEditor.on('change', run);
-        // cssEditor.on('change', run);
-        // jsEditor.on('change', run);
+        const output = document.getElementById('output');
 
-        // function run() {
-        //     let htmlVal = htmlEditor.getValue();
-        //     let cssVal = cssEditor.getValue();
-        //     let jsVal = jsEditor.getValue();
+        function run() {
+            let htmlVal = htmlEditor.getValue();
+            let cssVal = cssEditor.getValue();
+            let jsVal = jsEditor.getValue();
 
-        //     // Update the content of the output iframe
-        //     output.contentDocument.body.innerHTML = htmlVal + '<style>' + cssVal + '</style>';
-        //     output.contentWindow.eval(jsVal);
-        // }
+            // Update the content of the output iframe
+            output.contentDocument.body.innerHTML = htmlVal + '<style>' + cssVal + '</style>';
+            output.contentWindow.eval(jsVal);
+        }
 
-
-        const selectEl = document.getElementById('id_primary_code_type')
-        M.FormSelect.init(selectEl)
-
+        const selectEl = document.getElementById('id_primary_code_type');
+        M.FormSelect.init(selectEl);
     </script>
     
 {% endblock %}
