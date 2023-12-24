@@ -6,6 +6,11 @@
     {% for snippet in snippets %}
 
     <div class="snippet-preview">
+        <div class="tag-container">
+            <div class="tag">tag</div>
+            <div class="tag">tag</div>
+            <div class="tag">tag</div>
+        </div>
         <div class="preview-container">
             <div class="preview">
                 <style>{{ snippet.css_code|safe }}</style>
@@ -13,14 +18,8 @@
                 <script>{{ snippet.js_code|safe }}</script>
             </div>
         </div>
-        <div class="tag-container">
-            <div class="tag-container-div">
-                <div class="tag">tag</div>
-                <div class="tag">tag</div>
-                <div class="tag">tag</div>
-            </div>
-            
-            <a href="{% url 'detail' snippet.id %}" class="title-tag"><div class="tag">Details: {{ snippet.title }}</div></a>
+        <div class="details-button-container">
+            <a href="{% url 'detail' snippet.id %}" class="details-button"><div>{{ snippet.title }}</div></a>
         </div>
     </div>
 
