@@ -47,30 +47,44 @@
     
 
     <script>
+        // HTML
+        const htmleditor = CodeMirror.fromTextArea(document.getElementById("id_html_code"), {
+            mode: "xml",
+            lineNumbers: true,
+            theme: 'monokai',
+            autoCloseTags: true
+        });
 
-        const htmlEl = document.getElementById('id_html_code')
-        const cssEl = document.getElementById('id_css_code')
-        const jsEl = document.getElementById('id_js_code')
+        // CSS
+        const cssEditor = CodeMirror.fromTextArea(document.getElementById("id_css_code"), {
+            mode: "css",
+            lineNumbers: true,
+            theme: 'monokai'
+        });
+
+        // JavaScript
+        const jsEditor = CodeMirror.fromTextArea(document.getElementById("id_js_code"), {
+            mode: "javascript",
+            lineNumbers: true,
+            theme: 'monokai'
+        });
+
         const output = document.getElementById('output')
 
-        htmlEl.addEventListener('keyup', function() {
-            run()
-        })
-        cssEl.addEventListener('keyup', function() {
-            run()
-        })
-        jsEl.addEventListener('keyup', function() {
-            run()
-        })
+        // htmlEditor.on('change', run);
+        // cssEditor.on('change', run);
+        // jsEditor.on('change', run);
 
-        function run() {
-            let htmlVal = htmlEl.value
-            let cssVal = cssEl.value
-            let jsVal = jsEl.value
+        // function run() {
+        //     let htmlVal = htmlEditor.getValue();
+        //     let cssVal = cssEditor.getValue();
+        //     let jsVal = jsEditor.getValue();
 
-            output.contentDocument.body.innerHTML = htmlVal + '<style>' + cssVal + '</style>'
-            output.contentWindow.eval(jsVal)
-        }
+        //     // Update the content of the output iframe
+        //     output.contentDocument.body.innerHTML = htmlVal + '<style>' + cssVal + '</style>';
+        //     output.contentWindow.eval(jsVal);
+        // }
+
 
         const selectEl = document.getElementById('id_primary_code_type')
         M.FormSelect.init(selectEl)
