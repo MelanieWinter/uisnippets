@@ -12,18 +12,24 @@
                 <div class="tag">tag</div>
                 <div class="tag">tag</div>
             </div>
-            <div class="details-button-container">
-                <a href="{% url 'detail' snippet.id %}" class="details-button"><div>{{ snippet.title }}</div></a>
-            </div>
         </div>
 
 
-        <iframe class="preview" srcdoc="{{ snippet.html_code|safe }}">
-            <style>{{ snippet.css_code|safe }}</style>
-            <script>{{ snippet.js_code|safe }}</script>
-        </iframe>
+        <iframe class="preview" srcdoc="
+            <html>
+            <head>
+                <style>{{ snippet.css_code }}</style>
+            </head>
+            <body>
+                {{ snippet.html_code }}
+                <script>{{ snippet.js_code }}</script>
+            </body>
+            </html>
+        "></iframe>
 
-
+        <div class="details-button-container">
+            <a href="{% url 'detail' snippet.id %}" class="details-button"><div>{{ snippet.title }}</div></a>
+        </div>
     </div>
 
     {% endfor %}

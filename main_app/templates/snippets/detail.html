@@ -57,7 +57,7 @@
         </div>
         <div class="right-c">
             <label><i class="fa-solid fa-play"></i> Output</label>
-            <iframe id="output_snippet"></iframe>
+            <iframe id="output-snippet"></iframe>
         </div>
     </div>
 </div>
@@ -67,7 +67,7 @@
     const htmlSnippetEl = document.getElementById('html_snippet').textContent
     const cssSnippetEl = document.getElementById('css_snippet').textContent
     const jsSnippetEl = document.getElementById('js_snippet').textContent
-    const outputSnippetEl = document.getElementById('output_snippet')
+    const outputSnippetEl = document.getElementById('output-snippet')
 
     function show() {
         outputSnippetEl.contentDocument.body.innerHTML = htmlSnippetEl + '<style>' + cssSnippetEl + '</style>'

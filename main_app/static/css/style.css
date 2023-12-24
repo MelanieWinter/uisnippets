@@ -191,10 +191,10 @@ footer.page-footer {
 }
 
 .snippets {
-    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    gap: 2vmin;
+    gap: 4vmin;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .snippet-preview {
@@ -203,13 +203,19 @@ footer.page-footer {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 90vw;
-    height: 10rem;
+    flex-basis: 25rem;
+    height: 20rem;
     border-radius: var(--border-radius);
     background-color: var(--light-foreground);
     box-shadow: var(--box-shadow);
-    overflow: auto;
     padding: 1rem;
+}
+
+.preview {
+    border: 1px solid var(--light-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: auto;
 }
 
 .all-buttons-container {
@@ -252,6 +258,10 @@ footer.page-footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.details-button {
+    width: 100%;
 }
 
 #submit-btn {
@@ -327,4 +337,13 @@ footer.page-footer {
 .copy-button:hover {
     cursor: pointer;
     background-color: var(--light-secondary-dark);
+}
+
+.delete-h4 {
+    margin-bottom: 3rem;
+}
+
+.CodeMirror {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
