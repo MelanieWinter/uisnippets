@@ -18,8 +18,12 @@ def snippets_index(request):
 
 def snippets_detail(request, snippet_id):
     snippet = Snippet.objects.get(id=snippet_id)
+    upvote_count = snippet.vote_set.filter(vote_type='UP').count()
+    downvote_count = snippet.vote_set.filter(vote_type='DOWN').count()
     return render(request, 'snippets/detail.html', {
-        'snippet': snippet
+        'snippet': snippet,
+        'upvote_count': upvote_count,
+        'downvote_count': downvote_count,
     })
 
 class SnippetCreate(CreateView):

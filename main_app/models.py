@@ -13,3 +13,15 @@ class Snippet(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'snippet_id': self.id})
+    
+class Vote(models.Model):
+    VOTE_CHOICES = [
+        ('UP', 'Upvote'),
+        ('DOWN', 'Downvote'),
+    ]
+
+    snippet = models.ForeignKey(Snippet, on_delete=models.CASCADE)
+    vote_type = models.CharField(max_length=4, choices=VOTE_CHOICES, default='UP')
+
+    def __str__(self):
+        return f'{self.get_vote_type_display()} for {self.snippet.title}'
