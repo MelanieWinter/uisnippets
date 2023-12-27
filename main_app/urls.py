@@ -9,4 +9,5 @@ urlpatterns = [
     path('snippets/create/', views.SnippetCreate.as_view(), name='snippets_create'),
     path('snippets/<int:pk>/update/', views.SnippetUpdate.as_view(), name='snippets_update'),
     path('snippets/<int:pk>/delete/', views.SnippetDelete.as_view(), name='snippets_delete'),
+    path('snippets/<int:snippet_id>/add_vote/', views.add_vote, name='add_vote'),
 ]

@@ -61,8 +61,20 @@
 
             <div class="detail-info">
 
-                <p>Upvotes: {{ upvote_count }}</p>
-                <p>Downvotes: {{ downvote_count }}</p>
+                <form action="{% url 'add_vote' snippet.id %}" method="POST">
+                    {% csrf_token %}
+                    {{ vote_form.as_p }}
+                    <input type="submit" class="btn" value="Add Vote">
+                </form>
+
+                <span>
+                    <i class="fa-solid fa-circle-arrow-up"></i> 
+                    {{ upvote_count }}
+                </span>
+                <span>
+                    <i class="fa-solid fa-circle-arrow-down"></i> 
+                    {{ downvote_count }}
+                </span>
             
             </div>
             
@@ -87,6 +99,9 @@
     document.addEventListener('DOMContentLoaded', function () {
         new ClipboardJS('.copy-button');
     });
+
+    const selectEl = document.getElementById('id_vote_type');
+    M.FormSelect.init(selectEl);
 
 </script>
 
