@@ -3,13 +3,13 @@
 
 <div>
     <h1>Tag List</h1>
-
-    {% for tag in tag_list %}
-        <a href="{% url 'tags_detail' tag.id %}">
-            <div class="tag">{{tag.name}}</div>
-        </a>
-    {% endfor %}
-
+    <div class="tag-buttons">
+        {% for tag in tag_list %}
+            <a href="{% url 'tags_detail' tag.id %}">
+                <button class="tag">{{tag.name}}</button>
+            </a>
+        {% endfor %}
+    </div>
 </div>
 
 

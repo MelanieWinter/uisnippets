@@ -59,24 +59,28 @@
             <label><i class="fa-solid fa-play"></i> Output</label>
             <iframe id="output-snippet"></iframe>
 
-            <div class="upvote-div">
+
+
+            <div class="vote-div">
                 <form action="{% url 'add_vote' snippet.id %}" method="POST">
                     {% csrf_token %}
-                    {{ vote_form.as_p }}
-                    <input type="submit" class="btn" value="Add Vote">
-                </form>
-
-                <span>
-                    <i class="fa-solid fa-circle-arrow-up"></i> 
+                    
+                    <button type="submit" name="vote_type" value="UP">
+                        <i class="fa-solid fa-circle-arrow-up"></i>
+                    </button>
                     {{ upvote_count }}
-                </span>
-                <span>
-                    <i class="fa-solid fa-circle-arrow-down"></i> 
+                    
+                    <button type="submit" name="vote_type" value="DOWN">
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </button>
                     {{ downvote_count }}
-                </span>
+                </form>
             </div>
 
-            <div class="snippet-tag-div">
+
+
+
+            <div class="tag-buttons">
                 {% if snippet.tags.count %}
                     {% for tag in snippet.tags.all %}
                     <div>

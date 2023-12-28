@@ -8,6 +8,7 @@ urlpatterns = [
     path('snippets/<int:snippet_id>/', views.snippets_detail, name='detail'),
     path('snippets/create/', views.SnippetCreate.as_view(), name='snippets_create'),
     path('snippets/<int:pk>/update/', views.SnippetUpdate.as_view(), name='snippets_update'),
+
     path('snippets/<int:pk>/delete/', views.SnippetDelete.as_view(), name='snippets_delete'),
     path('snippets/<int:snippet_id>/add_vote/', views.add_vote, name='add_vote'),
 
@@ -19,4 +20,5 @@ urlpatterns = [
     path('tags/<int:pk>/delete/', views.TagDelete.as_view(), name='tags_delete'),
     path('snippets/<int:snippet_id>/assoc_tag/<int:tag_id>/', views.assoc_tag, name='assoc_tag'),
     path('snippets/<int:snippet_id>/remove_tag/<int:tag_id>/', views.remove_tag, name='remove_tag'),
+    path('snippets/<int:snippet_id>/add_tag/', views.add_tag, name='add_tag'),
 ]

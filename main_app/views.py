@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Snippet, Tag
-from .forms import VoteForm
+from .forms import VoteForm, TagForm
 
 # Create your views here.
 def home(request):
@@ -41,6 +41,7 @@ class SnippetCreate(CreateView):
         context = super().get_context_data(**kwargs)
         context['tags_not_in_snippet'] = Tag.objects.all()
         context['tags'] = 'Tags'
+        context['tag_form'] = TagForm()
         return context
 
     def get_success_url(self):
@@ -52,9 +53,17 @@ class SnippetUpdate(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        
+        # Fetching upvote and downvote counts
+        context['upvote_count'] = self.object.vote_set.filter(vote_type='UP').count()
+        context['downvote_count'] = self.object.vote_set.filter(vote_type='DOWN').count()
+
+        # Fetching tag-related data
         id_list = self.object.tags.all().values_list('id', flat=True)
         context['tags_not_in_snippet'] = Tag.objects.exclude(id__in=id_list)
         context['tags'] = 'Tags'
+        context['tag_form'] = TagForm()
+
         return context
 
     def get_success_url(self):
@@ -72,7 +81,6 @@ def add_vote(request, snippet_id):
         new_vote.snippet_id = snippet_id
         new_vote.save()
     return redirect('detail', snippet_id=snippet_id)
-
 
 # tag model
 class TagList(ListView):
@@ -94,9 +102,24 @@ class TagDelete(DeleteView):
     success_url = '/tags'
 
 def assoc_tag(request, snippet_id, tag_id):
-    Snippet.objects.get(id=snippet_id).tags.add(tag_id)
-    return redirect('detail', snippet_id=snippet_id)
+    snippet = get_object_or_404(Snippet, id=snippet_id)
+    tag = get_object_or_404(Tag, id=tag_id)
+    snippet.tags.add(tag)
+    return redirect('snippets_update', pk=snippet.id)
 
 def remove_tag(request, snippet_id, tag_id):
-    Snippet.objects.get(id=snippet_id).tags.remove(tag_id)
-    return redirect('detail', snippet_id=snippet_id)
+    snippet = get_object_or_404(Snippet, id=snippet_id)
+    tag = get_object_or_404(Tag, id=tag_id)
+    snippet.tags.remove(tag)
+    return redirect('snippets_update', pk=snippet.id)
+
+
+def add_tag(request, snippet_id):
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            tag = form.save(commit=False)
+            tag.save()
+            snippet = Snippet.objects.get(id=snippet_id)
+            snippet.tags.add(tag)
+    return redirect('snippets_update', pk=snippet_id)

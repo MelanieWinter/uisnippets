@@ -48,40 +48,51 @@
                     <iframe id="output"></iframe>
                 </div>
                 
-                <div class="snippet-tag-div">
-                    {% if snippet.tags.count %}
-                        {% for tag in snippet.tags.all %}
-                        <div>
-                            <a href="{% url 'tags_detail' tag.id %}">
-                                <button class="tag">{{tag.name}}</button>
-                            </a>
-                        </div>
-                        <div>
-                            <form method="POST" action="{% url 'remove_tag' snippet.id tag.id %}">
-                                {% csrf_token %}
-                                <button type="submit">Remove</button>
-                            </form>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <h5>No Tags</h5>
-                    {% endif %}
-                </div>
-    
-                <div>
-                    <h5>add a tag</h5>
-                    <div>
-                        {% if tags_not_in_snippet %}
-                            {% for tag in tags_not_in_snippet %}
-                                <form method="POST" action="{% url 'assoc_tag' snippet.id tag.id %}">
+                {% if object %}
+                    <div class="tag-buttons">
+                        {% if snippet.tags.count %}
+                            {% for tag in snippet.tags.all %}
+                            <div>
+                                <form method="POST" action="{% url 'remove_tag' snippet.id tag.id %}">
                                     {% csrf_token %}
                                     <button type="submit" class="tag">{{tag.name}}</button>
                                 </form>
+                            </div>
                             {% endfor %}
+                        {% else %}
+                            <h5>No Tags</h5>
                         {% endif %}
                     </div>
-                </div>
-                
+                    <div>
+                        <h5>add a tag</h5>
+                        <div class="tag-buttons">
+                            {% if tags_not_in_snippet %}
+                                {% for tag in tags_not_in_snippet %}
+                                    <form method="POST" action="{% url 'assoc_tag' snippet.id tag.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="tag">{{tag.name}}</button>
+                                    </form>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="vote-div">
+                        <form action="{% url 'add_vote' snippet.id %}" method="POST">
+                            {% csrf_token %}
+                            
+                            <button type="submit" name="vote_type" value="UP">
+                                <i class="fa-solid fa-circle-arrow-up"></i>
+                            </button>
+                            {{ upvote_count }}
+                            
+                            <button type="submit" name="vote_type" value="DOWN">
+                                <i class="fa-solid fa-circle-arrow-down"></i>
+                            </button>
+                            {{ downvote_count }}
+                        </form>
+                    </div>
+                {% endif %}
+
             </div>
         </div>
     </div>
