@@ -6,6 +6,10 @@
     
     <div>
         <span>{{ tag.name }}</span>
+        <br>
+        <a href="{% url 'tags_update' tag.id %}">Edit</a>
+        <br>
+        <a href="{% url 'tags_delete' tag.id %}">Delete</a>
     </div>
     
 </div>

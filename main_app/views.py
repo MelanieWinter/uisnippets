@@ -60,5 +60,11 @@ class TagDetail(DetailView):
 class TagCreate(CreateView):
     model = Tag
     fields = '__all__'
+
+class TagUpdate(UpdateView):
+    model = Tag
+    fields = '__all__'   
+
+class TagDelete(DeleteView):
+    model = Tag
     success_url = '/tags'
-    
