@@ -17,4 +17,6 @@ urlpatterns = [
     path('tags/create/', views.TagCreate.as_view(), name='tags_create'),
     path('tags/<int:pk>/update/', views.TagUpdate.as_view(), name='tags_update'),
     path('tags/<int:pk>/delete/', views.TagDelete.as_view(), name='tags_delete'),
+    path('snippets/<int:snippet_id>/assoc_tag/<int:tag_id>/', views.assoc_tag, name='assoc_tag'),
+    path('snippets/<int:snippet_id>/remove_tag/<int:tag_id>/', views.remove_tag, name='remove_tag'),
 ]

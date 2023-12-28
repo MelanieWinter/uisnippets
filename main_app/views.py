@@ -68,3 +68,11 @@ class TagUpdate(UpdateView):
 class TagDelete(DeleteView):
     model = Tag
     success_url = '/tags'
+
+def assoc_tag(request, snippet_id, tag_id):
+    Snippet.objects.get(id=snippet_id).tags.add(tag_id)
+    return redirect('detail', snippet_id=snippet_id)
+
+def remove_tag(request, snippet_id, tag_id):
+    Snippet.objects.get(id=snippet_id).tags.remove(tag_id)
+    return redirect('detail', snippet_id=snippet_id)

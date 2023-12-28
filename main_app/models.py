@@ -1,12 +1,22 @@
 from django.db import models
 from django.urls import reverse
 
+class Tag(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('tags_detail', kwargs={'pk': self.id})
+
 class Snippet(models.Model):
     title = models.CharField(max_length=100, default='untitled')
     description = models.CharField(max_length=500)
     html_code = models.TextField(default='<!-- html -->')
     css_code = models.TextField(default='/* css */')
     js_code = models.TextField(default='// js')
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.title
@@ -26,12 +36,5 @@ class Vote(models.Model):
     def __str__(self):
         return f'{self.get_vote_type_display()} for {self.snippet.title}'
     
-class Tag(models.Model):
-    name = models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.name
-    
-    def get_absolute_url(self):
-        return reverse('tags_detail', kwargs={'pk': self.id})
 
