@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import Snippet, Tag
 from .forms import VoteForm, TagForm
 from django.db.models import Q
+from django.urls import reverse_lazy
 
 # Create your views here.
 def home(request):
@@ -37,7 +38,7 @@ def snippets_detail(request, snippet_id):
 class SnippetCreate(CreateView):
     model = Snippet
     fields = '__all__'
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tags_not_in_snippet'] = Tag.objects.all()

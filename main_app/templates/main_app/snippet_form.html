@@ -9,39 +9,41 @@
 
     <div class="whole-form-container">
         <form action="" method="POST">
+        {% csrf_token %}
         <div class="top-form-container">
-                <!-- #id_title -->
-                <div class="form-title">
-                    <div>
-                    <label for="{{ form.title.id_for_label }}" id="title-label">Title</label>
-                    {{ form.title }}
-                    </div>
-                    <div>
-                        <label for="{{ form.description.id_for_label }}" id="description-label">Description</label>
-                        {{form.description}}
-                    </div>
+            <!-- #id_title -->
+            <div class="form-title">
+                <div>
+                <label for="{{ form.title.id_for_label }}" id="title-label">Title</label>
+                {{ form.title }}
                 </div>
-                <div class="form-buttons">
-                    <input type="submit" value="Submit" class="btn white-text" id="submit-btn">
+                <div>
+                    <label for="{{ form.description.id_for_label }}" id="description-label">Description</label>
+                    {{form.description}}
                 </div>
+            </div>
+            <div class="form-buttons">
+                <input type="submit" value="Submit" class="btn white-text" id="submit-btn">
+            </div>
         </div>
     
         <div class="container">
             <div class="left-c">
-                    {% csrf_token %}
-                    <!-- #id_html_code -->
-                    <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
-                    {{form.html_code}}
-    
-                    <!-- #id_css_code -->
-                    <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
-                    {{form.css_code}}
-    
-                    <!-- id_js_code -->
-                    <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
-                    {{form.js_code}}
-                </form>
+                {% csrf_token %}
+                <!-- #id_html_code -->
+                <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
+                {{form.html_code}}
+
+                <!-- #id_css_code -->
+                <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
+                {{form.css_code}}
+
+                <!-- id_js_code -->
+                <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
+                {{form.js_code}}
             </div>
+        </form>
+            
             <div class="right-c">
                 <div>
                     <label><i class="fa-solid fa-play"></i> Output</label>

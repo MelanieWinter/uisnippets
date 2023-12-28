@@ -16,7 +16,7 @@ class Snippet(models.Model):
     html_code = models.TextField(default='<!-- html -->')
     css_code = models.TextField(default='/* css */')
     js_code = models.TextField(default='// js')
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.title
