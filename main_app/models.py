@@ -25,3 +25,10 @@ class Vote(models.Model):
 
     def __str__(self):
         return f'{self.get_vote_type_display()} for {self.snippet.title}'
+    
+class Tag(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+

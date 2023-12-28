@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    <h1>Tag List</h1>
+
+    {% for tag in tag_list %}
+        <a href="{% url 'tags_detail' tag.id %}">
+            <div>
+                <span class="card-title">{{ tag.name }}</span>
+            </div>
+        </a>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

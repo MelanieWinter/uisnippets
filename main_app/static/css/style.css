@@ -3,56 +3,30 @@
     --box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
     /* LIGHT MODE -- color scheme */
-    --light-primary: hsl(209, 81%, 52%);
+    --light-primary: hsl(235, 86%, 65%);
     --light-primary-content: hsl(0, 0%, 100%);
-    --light-primary-dark: hsl(209, 81%, 42%);
-    --light-primary-light: hsl(209, 82%, 62%);
-
-    --light-secondary: hsl(239, 81%, 52%);
-    --light-secondary-content: hsl(0, 0%, 100%);
-    --light-secondary-dark: hsl(239, 81%, 42%);
-    --light-secondary-light: hsl(239, 82%, 62%);
-
-    --light-background: hsl(210, 7%, 94%);
-    --light-foreground: hsl(0, 0%, 98%);
-    --light-border: hsl(210, 6%, 87%);
-
-    --light-copy: hsl(216, 6%, 15%);
-    --light-copy-light: hsl(210, 7%, 40%);
-    --light-copy-lighter: hsl(206, 7%, 55%);
-
-    --light-success: hsl(120, 81%, 52%);
-    --light-warning: hsl(60, 81%, 52%);
-    --light-error: hsl(0, 81%, 52%);
-    --light-success-content: hsl(120, 78%, 2%);
-    --light-warning-content: hsl(60, 78%, 2%);
-    --light-error-content: hsl(0, 0%, 100%);
-
-    /* DARK MODE -- color scheme */
-    --dark-primary: hsl(209, 81%, 52%);
-    --dark-primary-content: hsl(0, 0%, 100%);
-    --dark-primary-dark: hsl(209, 81%, 42%);
-    --dark-primary-light: hsl(209, 82%, 62%);
-
-    --dark-secondary: hsl(239, 81%, 52%);
-    --dark-secondary-content: hsl(0, 0%, 100%);
-    --dark-secondary-dark: hsl(239, 81%, 42%);
-    --dark-secondary-light: hsl(239, 82%, 62%);
-
-    --dark-background: hsl(200, 6%, 10%);
-    --dark-foreground: hsl(216, 6%, 15%);
-    --dark-border: hsl(207, 7%, 25%);
-
-    --dark-copy: hsl(0, 0%, 98%);
-    --dark-copy-light: hsl(204, 6%, 85%);
-    --dark-copy-lighter: hsl(208, 7%, 65%);
-
-    --dark-success: hsl(120, 81%, 52%);
-    --dark-warning: hsl(60, 81%, 52%);
-    --dark-error: hsl(0, 81%, 52%);
-    --dark-success-content: hsl(120, 78%, 2%);
-    --dark-warning-content: hsl(60, 78%, 2%);
-    --dark-error-content: hsl(0, 0%, 100%);
+    --light-primary-dark: hsl(235, 85%, 55%);
+    --light-primary-light: hsl(235, 86%, 75%);
+    
+    --light-secondary: hsl(335, 86%, 65%);
+    --light-secondary-content: hsl(335, 87%, 15%);
+    --light-secondary-dark: hsl(335, 85%, 55%);
+    --light-secondary-light: hsl(335, 86%, 75%);
+    
+    --light-background: hsl(233, 27%, 94%);
+    --light-foreground: hsl(240, 25%, 98%);
+    --light-border: hsl(233, 25%, 87%);
+    
+    --light-copy: hsl(237, 25%, 15%);
+    --light-copy-light: hsl(235, 25%, 40%);
+    --light-copy-lighter: hsl(235, 25%, 55%);
+    
+    --light-success: hsl(120, 86%, 65%);
+    --light-warning: hsl(60, 86%, 65%);
+    --light-error: hsl(0, 86%, 65%);
+    --light-success-content: hsl(120, 87%, 15%);
+    --light-warning-content: hsl(60, 87%, 15%);
+    --light-error-content: hsl(0, 87%, 15%);
 
 }
 
@@ -258,7 +232,7 @@ footer.page-footer {
 #delete-button,
 #cancel-button,
 .details-button {
-    background-color: var(--light-primary-dark);
+    background-color: var(--light-primary);
     border-radius: var(--border-radius);
     color: var(--light-primary-content);
     border: none;
@@ -286,7 +260,7 @@ footer.page-footer {
 #cancel-button:hover,
 .details-button:hover {
     cursor: pointer;
-    background-color: hsl(209, 81%, 35%);
+    background-color: var(--light-primary-dark);
 }
 
 .tag {

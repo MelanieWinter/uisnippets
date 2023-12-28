@@ -10,4 +10,9 @@ urlpatterns = [
     path('snippets/<int:pk>/update/', views.SnippetUpdate.as_view(), name='snippets_update'),
     path('snippets/<int:pk>/delete/', views.SnippetDelete.as_view(), name='snippets_delete'),
     path('snippets/<int:snippet_id>/add_vote/', views.add_vote, name='add_vote'),
+
+    # tag
+    path('tags/', views.TagList.as_view(), name='tags_index'),
+    path('tags/<int:pk>/', views.TagDetail.as_view(), name='tags_detail'),
+    path('tags/create/', views.TagCreate.as_view(), name='tags_create'),
 ]

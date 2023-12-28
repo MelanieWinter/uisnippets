@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Snippet
+from django.views.generic import ListView, DetailView
+from .models import Snippet, Tag
 from .forms import VoteForm
 
 # Create your views here.
@@ -47,3 +48,17 @@ def add_vote(request, snippet_id):
         new_vote.snippet_id = snippet_id
         new_vote.save()
     return redirect('detail', snippet_id=snippet_id)
+
+
+# tag model
+class TagList(ListView):
+    model = Tag
+
+class TagDetail(DetailView):
+    model = Tag
+
+class TagCreate(CreateView):
+    model = Tag
+    fields = '__all__'
+    success_url = '/tags'
+    
