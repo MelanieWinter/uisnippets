@@ -117,6 +117,7 @@ body {
     /* flex-basis: 50%; */
     width: 38rem;
     padding: 10px;
+    border: 1px solid blue;
 }
 
 textarea {
@@ -134,16 +135,13 @@ textarea {
 #output,
 #output-snippet {
     width: 100%;
-    height: 97%;
+    height: 46vmin;
     border-radius: var(--border-radius);
     background-color: var(--light-foreground);
     box-shadow: var(--box-shadow);
     border: 0;
     outline: 0;
-}
-
-#output-snippet {
-    height: 50%;
+    border: 1px solid red;
 }
 
 label i {
@@ -301,6 +299,7 @@ footer.page-footer {
     border: 0;
     outline: 0;
     font-size: 1rem;
+    border: 1px solid green;
 }
 
 .code-container > div {
@@ -331,4 +330,20 @@ footer.page-footer {
 .CodeMirror {
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+    height: 50vmin;
+}
+
+#search-bar {
+    width: 80vmin;
+    height: 5vmin;
+    background-color: var(--light-foreground);
+    border-radius: var(--border-radius);
+    border: 0;
+    outline: 0;
+    font-size: 1rem;
+    margin-top: 2.5vmin;
+    padding-inline: 10px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
 }

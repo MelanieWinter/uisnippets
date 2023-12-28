@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Snippet, Tag
 from .forms import VoteForm, TagForm
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -123,3 +124,18 @@ def add_tag(request, snippet_id):
             snippet = Snippet.objects.get(id=snippet_id)
             snippet.tags.add(tag)
     return redirect('snippets_update', pk=snippet_id)
+
+def search_view(request):
+    query = request.GET.get('q', '')
+    
+    # Search for snippets that match the query in various fields
+    snippets = Snippet.objects.filter(
+        Q(title__icontains=query) |              # Match in the title
+        Q(tags__name__icontains=query) |         # Match in tags
+        Q(html_code__icontains=query) |          # Match in HTML code
+        Q(css_code__icontains=query) |           # Match in CSS code
+        Q(js_code__icontains=query) |            # Match in JS code
+        Q(description__icontains=query)         # Match in the description
+    ).distinct()
+    
+    return render(request, 'search_results.html', {'snippets': snippets, 'query': query})

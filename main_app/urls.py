@@ -21,4 +21,6 @@ urlpatterns = [
     path('snippets/<int:snippet_id>/assoc_tag/<int:tag_id>/', views.assoc_tag, name='assoc_tag'),
     path('snippets/<int:snippet_id>/remove_tag/<int:tag_id>/', views.remove_tag, name='remove_tag'),
     path('snippets/<int:snippet_id>/add_tag/', views.add_tag, name='add_tag'),
+
+    path('search/', views.search_view, name='search_view'),
 ]
