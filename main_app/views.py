@@ -51,7 +51,7 @@ class SnippetCreate(CreateView):
 
 class SnippetUpdate(UpdateView):
     model = Snippet
-    fields = '__all__'
+    fields = ['title', 'description', 'html_code', 'css_code', 'js_code']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -140,3 +140,6 @@ def search_view(request):
     ).distinct()
     
     return render(request, 'search_results.html', {'snippets': snippets, 'query': query})
+
+def search_bar(request):
+    return render(request, 'search_bar.html')

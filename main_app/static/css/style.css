@@ -163,30 +163,26 @@ main {
     flex: 1 0 auto;
 }
 
-footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-}
-
-.page-nav,
-.page-footer {
-    position: relative;
+.page-nav {
+    position: fixed;
     left: 0;
+    top: 0;
     width: 100%;
     background-color: var(--primary);
     box-shadow: var(--box-shadow);
-}
-
-.page-nav {
-    height: 5rem;
+    width: 5rem;
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
     align-items: center;
-    padding-inline: 2rem;
+    padding: 1rem;
 }
 
 .page-nav > div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;

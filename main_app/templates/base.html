@@ -16,9 +16,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UI Snippets</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script> -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <script src="https://kit.fontawesome.com/fc377b8991.js" crossorigin="anonymous"></script>
 
     <!-- codemirror -->
@@ -43,10 +43,11 @@
     <header class="navbar-fixed">
         <nav class="page-nav">
             <div>
-                <a href="/" class="left brand-logo">&nbsp;&nbsp;UI Elements</a>
+                <a href="/" class="left brand-logo">&nbsp;&nbsp;UI Snippets</a>
             </div>
             <div>
-                <a href="{% url 'about' %}" title="Search"><button class="nav-button"><i class="fa-solid fa-magnifying-glass"></i></button></a>
+                <a href="/search_bar" title="Search"><button class="nav-button"><i class="fa-solid fa-magnifying-glass"></i></button></a>
+                <a href="{% url 'about' %}" title="About"><button class="nav-button"><i class="fa-brands fa-readme"></i></button></a>
                 <!-- <a href="{% url 'tags_create' %}"><button class="nav-button">Add a Tag</button></a> -->
                 <a href="{% url 'tags_index' %}" title="All Tags"><button class="nav-button"><i class="fa-solid fa-tags"></i></button></a>
                 <a href="{% url 'snippets_create' %}" title="Add a Snippet"><button class="nav-button"><i class="fa-solid fa-plus"></i></button></a>
@@ -60,9 +61,6 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="page-footer">
-        <div class="right">All Rights Reserved, &copy; 2023 UI Elements &nbsp;</div>
-    </footer>
 </body>
 </html>
 
