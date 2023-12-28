@@ -6,9 +6,7 @@
 
     {% for tag in tag_list %}
         <a href="{% url 'tags_detail' tag.id %}">
-            <div>
-                <span class="card-title">{{ tag.name }}</span>
-            </div>
+            <div class="tag">{{tag.name}}</div>
         </a>
     {% endfor %}
 

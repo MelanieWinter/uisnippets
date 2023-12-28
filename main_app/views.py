@@ -22,20 +22,44 @@ def snippets_detail(request, snippet_id):
     upvote_count = snippet.vote_set.filter(vote_type='UP').count()
     downvote_count = snippet.vote_set.filter(vote_type='DOWN').count()
     vote_form = VoteForm()
+    id_list = snippet.tags.all().values_list('id')
+    tags_not_in_snippet = Tag.objects.exclude(id__in=id_list)
+    print(tags_not_in_snippet)
     return render(request, 'snippets/detail.html', {
         'snippet': snippet,
         'upvote_count': upvote_count,
         'downvote_count': downvote_count,
-        'vote_form' : vote_form
+        'vote_form' : vote_form,
+        'tags': tags_not_in_snippet
     })
 
 class SnippetCreate(CreateView):
     model = Snippet
     fields = '__all__'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags_not_in_snippet'] = Tag.objects.all()
+        context['tags'] = 'Tags'
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('detail', kwargs={'snippet_id': self.object.id})
+
 class SnippetUpdate(UpdateView):
     model = Snippet
     fields = '__all__'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        id_list = self.object.tags.all().values_list('id', flat=True)
+        context['tags_not_in_snippet'] = Tag.objects.exclude(id__in=id_list)
+        context['tags'] = 'Tags'
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('detail', kwargs={'snippet_id': self.object.id})
+
 
 class SnippetDelete(DeleteView):
     model = Snippet

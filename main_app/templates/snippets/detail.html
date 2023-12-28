@@ -59,8 +59,7 @@
             <label><i class="fa-solid fa-play"></i> Output</label>
             <iframe id="output-snippet"></iframe>
 
-            <div class="detail-info">
-
+            <div class="upvote-div">
                 <form action="{% url 'add_vote' snippet.id %}" method="POST">
                     {% csrf_token %}
                     {{ vote_form.as_p }}
@@ -75,9 +74,19 @@
                     <i class="fa-solid fa-circle-arrow-down"></i> 
                     {{ downvote_count }}
                 </span>
-            
             </div>
-            
+
+            <div class="snippet-tag-div">
+                {% if snippet.tags.count %}
+                    {% for tag in snippet.tags.all %}
+                    <div>
+                        <a href="{% url 'tags_detail' tag.id %}">
+                            <button class="tag">{{tag.name}}</button>
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>

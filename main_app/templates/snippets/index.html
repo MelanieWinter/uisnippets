@@ -8,9 +8,13 @@
     <div class="snippet-preview">
         <div class="all-buttons-container">
             <div class="tag-buttons">
-                <div class="tag">tag</div>
-                <div class="tag">tag</div>
-                <div class="tag">tag</div>
+                {% if snippet.tags.count %}
+                    {% for tag in snippet.tags.all %}
+                    <a href="{% url 'tags_detail' tag.id %}">
+                        <button class="tag">{{tag.name}}</button>
+                    </a>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
 
