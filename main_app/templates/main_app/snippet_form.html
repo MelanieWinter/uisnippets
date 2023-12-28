@@ -51,6 +51,7 @@
                 </div>
                 
                 {% if object %}
+                    <h5>remove a tag</h5>
                     <div class="tag-buttons">
                         {% if snippet.tags.count %}
                             {% for tag in snippet.tags.all %}
@@ -66,7 +67,7 @@
                         {% endif %}
                     </div>
                     <div>
-                        <h5>add a tag</h5>
+                        <h5>assoc a tag</h5>
                         <div class="tag-buttons">
                             {% if tags_not_in_snippet %}
                                 {% for tag in tags_not_in_snippet %}
@@ -78,6 +79,15 @@
                             {% endif %}
                         </div>
                     </div>
+
+                    <div>
+                        <form method="POST" action="{% url 'add_tag' snippet.id %}">
+                            {% csrf_token %}
+                            {{ tag_form.as_p }}
+                            <button type="submit">Add Tag</button>
+                        </form>
+                    </div>
+
                     <div class="vote-div">
                         <form action="{% url 'add_vote' snippet.id %}" method="POST">
                             {% csrf_token %}
