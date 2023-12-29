@@ -201,6 +201,29 @@ h1 {
     box-shadow: var(--box-shadow);
     width: 15rem;
     height: 13rem;
+    position: relative;
+}
+
+.cta-box {
+    position: relative;
+    top: -1rem;
+    left: 1rem;
+    background: linear-gradient(to top left, var(--primary-dark), var(--primary-light));
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 4rem;
+    height: 3rem;
+    color: var(--primary-content);
+    font-size: 1.5rem;
+    display: grid;
+    place-items: center;
+}
+
+.cta-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .whole-form-container,
