@@ -1,10 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="page-container-div">
 
-<div>
-    <h1>Home</h1>
+    <div class="search-div">
+        <div class="search-bar-home">
+            <form action="{% url 'search_view' %}" method="GET" class="search-bar-div">
+                <input type="text" name="q" id="search-bar" placeholder="Search UI Snippets...">
+                <!-- <input type="submit" value="Search"> -->
+            </form>
+        </div>
+        <div class="login-buttons">
+            <button>Sign Up</button>
+            <button>Log In</button>
+        </div>
+    </div>
+
+
+    <div class="hero-home">
+        <div class="hero-title">
+            <h1><p>Designed to make</p> <p>your <span class="title-span">coding</span></p> <p>life easier</p></h1>
+        </div>
+    </div>
+
+    <div class="call-to-actions">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
 </div>
-
 
 {% endblock %}
