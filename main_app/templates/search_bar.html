@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- make this work -->
+<div class="sort-by">
+    <label for="sort-by">SORT BY</label>
+    <select id="sort-by" name="sort-by">
+        <option value="Relevance & Popularity">Relevance & Popularity</option>
+        <option value="Newest First">Newest First</option>
+    </select>
+</div>
 
 <div class="page-container-colcenter">
-
-    <!-- make this work -->
-    <div class="sort-by">
-        <label for="sort-by">SORT BY</label>
-        <select id="sort-by" name="sort-by">
-            <option value="Relevance & Popularity">Relevance & Popularity</option>
-            <option value="Newest First">Newest First</option>
-        </select>
-    </div>
 
     {% if query %}
 

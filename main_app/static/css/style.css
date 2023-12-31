@@ -124,15 +124,16 @@ h1 {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    padding: 2rem;
 }
 
-.page-container-col {
+/* .page-container-col {
     display: flex;
     flex-direction: column;
     padding-block: 2rem;
     padding-inline: 4rem;
     gap: 2rem;
-}
+} */
 
 .search-div {
     width: 100%;
@@ -186,7 +187,6 @@ h1 {
 }
 
 .hero-home {
-    padding: 2rem;
     width: 100%;
 }
 
@@ -202,13 +202,15 @@ h1 {
 }
 
 .call-to-actions {
-    padding: 4rem 2rem 2rem 2rem;
+    padding: 3rem 2rem 2rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     overflow-x: hidden;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 99999;
 }
 
 .call-to-actions > div {
@@ -264,7 +266,7 @@ h1 {
 
 .sort-by {
     width: 100%;
-    padding-inline: 4.5rem;
+    padding-inline: 5rem;
     font-size: .65rem;
     margin-top: -1rem;
     margin-bottom: .5rem;
@@ -288,7 +290,6 @@ h1 {
 
 .showing-results {
     color: var(--copy-light);
-    padding: 1rem;
     margin-bottom: 1rem;
     font-size: .75rem;
 }
