@@ -139,7 +139,7 @@ def search_view(request):
         Q(description__icontains=query)         # Match in the description
     ).distinct()
     
-    return render(request, 'search_results.html', {'snippets': snippets, 'query': query})
+    return render(request, 'search_bar.html', {'snippets': snippets, 'query': query})
 
 def search_bar(request):
     return render(request, 'search_bar.html')

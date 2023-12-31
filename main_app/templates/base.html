@@ -60,6 +60,18 @@
         </nav>
     </header>
     <main class="container">
+        <div class="search-div">
+            <div class="search-bar-home">
+                <form action="{% url 'search_view' %}" method="GET" class="search-bar-div">
+                    <input type="text" name="q" id="search-bar" placeholder="Search UI Snippets...">
+                    <!-- <input type="submit" value="Search"> -->
+                </form>
+            </div>
+            <div class="login-buttons">
+                <button>Sign Up</button>
+                <button>Log In</button>
+            </div>
+        </div>
         {% block content %}
         {% endblock %}
     </main>

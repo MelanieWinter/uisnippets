@@ -2,13 +2,81 @@
 {% block content %}
 
 
-<div>
-    <h1>Search</h1>
+<div class="page-container-div">
 
-    <form action="{% url 'search_view' %}" method="GET" class="search-bar-div">
-        <input type="text" name="q" id="search-bar" placeholder="Search...">
-        <input type="submit" value="Search">
-    </form>
+    <div class="sort-by">
+        <label for="sort-by">SORT BY</label>
+        <select id="sort-by" name="sort-by">
+            <option value="Relevance & Popularity">Relevance & Popularity</option>
+            <option value="Newest First">Newest First</option>
+        </select>
+    </div>
+
+    {% if query %}
+
+        <div class="showing-results">
+            <p>Showing results for "{{ query }}"</p>
+        </div>
+
+        {% if snippets %}
+        <div class="snippets">
+            {% for snippet in snippets %}
+                <a href="{% url 'detail' snippet.id %}">
+                    <div class="snippet-preview">
+                        <!-- <div class="all-buttons-container">
+                            <div class="tag-buttons">
+                                {% if snippet.tags.count %}
+                                    {% for tag in snippet.tags.all %}
+                                    <a href="{% url 'tags_detail' tag.id %}">
+                                        <button class="tag">{{tag.name}}</button>
+                                    </a>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div> -->
+                
+                        <iframe class="preview" srcdoc="
+                            <html>
+                            <head>
+                                <style>{{ snippet.css_code }}</style>
+                            </head>
+                            <body>
+                                {{ snippet.html_code }}
+                                <script>{{ snippet.js_code }}</script>
+                            </body>
+                            </html>
+                        "></iframe>
+
+                        <div class="snippet-bottom">
+                            <div class="snippet-bottom-first">
+                                <div class="avatar">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="snippet-title-div">
+                                    <p class="snippet-title-p">{{ snippet.title }}</p>
+                                    <p class="snippet-user-p">Unknown User</p>
+                                </div>
+                            </div>
+                            <div class="snippet-bottom-menu">
+                                <p><i class="fa-solid fa-ellipsis"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% else %}
+        <div class="basic">
+            <span>Enter a search term above.</span>
+        </div>
+    {% endif %}
+
+
+
+
 </div>
 
 
