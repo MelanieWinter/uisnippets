@@ -2,8 +2,9 @@
 {% block content %}
 
 
-<div class="page-container-div">
+<div class="page-container-colcenter">
 
+    <!-- make this work -->
     <div class="sort-by">
         <label for="sort-by">SORT BY</label>
         <select id="sort-by" name="sort-by">
@@ -21,20 +22,22 @@
         {% if snippets %}
         <div class="snippets">
             {% for snippet in snippets %}
-                <a href="{% url 'detail' snippet.id %}">
-                    <div class="snippet-preview">
-                        <!-- <div class="all-buttons-container">
-                            <div class="tag-buttons">
-                                {% if snippet.tags.count %}
-                                    {% for tag in snippet.tags.all %}
-                                    <a href="{% url 'tags_detail' tag.id %}">
-                                        <button class="tag">{{tag.name}}</button>
-                                    </a>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                        </div> -->
-                
+                <!-- on hover/dropdown of votes and tags/comments? -->
+                <div class="snippet-preview">
+                    <!-- <div class="all-buttons-container">
+                        <div class="tag-buttons">
+                            {% if snippet.tags.count %}
+                                {% for tag in snippet.tags.all %}
+                                <a href="{% url 'tags_detail' tag.id %}">
+                                    <button class="tag">{{tag.name}}</button>
+                                </a>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div> -->
+
+                    <!-- add enlarge button which opens a modal with details -->
+                    <a href="{% url 'detail' snippet.id %}">
                         <iframe class="preview" srcdoc="
                             <html>
                             <head>
@@ -46,24 +49,30 @@
                             </body>
                             </html>
                         "></iframe>
-
-                        <div class="snippet-bottom">
-                            <div class="snippet-bottom-first">
-                                <div class="avatar">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
+                    </a>
+                    <div class="snippet-bottom">
+                        <div class="snippet-bottom-first">
+                            <div class="avatar">
+                                <i class="fa-solid fa-user"></i>
+                            </div> 
+                            <a href="{% url 'detail' snippet.id %}">
                                 <div class="snippet-title-div">
                                     <p class="snippet-title-p">{{ snippet.title }}</p>
                                     <p class="snippet-user-p">Unknown User</p>
                                 </div>
-                            </div>
-                            <div class="snippet-bottom-menu">
-                                <p><i class="fa-solid fa-ellipsis"></i></p>
-                            </div>
+                            </a>
+                        </div>
+
+                        <!-- follow user -->
+                        <div class="snippet-bottom-menu">
+                            <p><i class="fa-solid fa-ellipsis"></i></p>
                         </div>
                     </div>
-                </a>
+                </div>
             {% endfor %}
+
+            <!-- ADD PAGINATION -->
+
         </div>
         {% else %}
             <p>No results found.</p>
@@ -73,10 +82,6 @@
             <span>Enter a search term above.</span>
         </div>
     {% endif %}
-
-
-
-
 </div>
 
 
