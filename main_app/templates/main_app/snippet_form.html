@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="page-container-colcenter">
-
+    <div class="snippet-form">
         <div class="form-top-bar">
             <div class="ftb-left">
                 <div class="form-logo">UI</div>
@@ -16,15 +15,38 @@
                     </div>
             </div>
             <div class="ftb-right">
-                <div class="form-heart">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
                 <div class="form-save">
                     <input type="submit" value="Save" class="btn white-text" id="submit-btn">
+                </div>
+                <!-- <div class="form-heart">
+                    <i class="fa-solid fa-heart"></i>
+                </div> -->
+                <div class="form-settings">
+                    <i class="fa-solid fa-gear"></i>
                 </div>
                 <div class="form-avatar">
                     <i class="fa-solid fa-user"></i>
                 </div>
+            </div>
+        </div>
+        <div class="form-iframes">
+            <div class="form-html">
+                <label for="{{ form.html_code.id_for_label }}">
+                    <i class="fa-brands fa-html5"></i> HTML
+                </label>
+                {{form.html_code}} <!-- #id_html_code -->
+            </div>
+            <div class="form-css">
+                <label for="{{ form.css_code.id_for_label }}">
+                    <i class="fa-brands fa-css3-alt"></i> CSS
+                </label>
+                {{form.css_code}} <!-- #id_css_code -->
+            </div>
+            <div class="form-js">
+                <label for="{{ form.js_code.id_for_label }}">
+                    <i class="fa-brands fa-js"></i> JS
+                </label>
+                {{form.js_code}} <!-- id_js_code -->
             </div>
         </div>
                 </form>
@@ -35,23 +57,7 @@
                 {{form.description}}
             </div> -->
 
-            <!-- <div class="form-buttons">
-                <input type="submit" value="Submit" class="btn white-text" id="submit-btn">
-            </div> -->
-<!-- 
-        <div class="top">
-            {% csrf_token %} -->
-            <!-- #id_html_code -->
-            <!-- <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
-            {{form.html_code}} -->
-
-            <!-- #id_css_code -->
-            <!-- <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
-            {{form.css_code}} -->
-
-            <!-- id_js_code -->
-            <!-- <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
-            {{form.js_code}}
+<!--
         </div>
         </form>
         <div>
