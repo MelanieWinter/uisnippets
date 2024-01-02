@@ -116,7 +116,41 @@ h1 {
 .logo:hover {
     cursor: pointer;
     color: var(--primary-content);
+}
 
+.page-footer {
+    left: 0;
+    bottom: 0;
+    width: 100% - 5rem;
+    margin-left: 5rem;
+    background-color: var(--primary-light);
+    box-shadow: var(--box-shadow);
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+}
+
+.footer-info {
+    font-size: .65rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.footer-home {
+    color: var(--primary-content);
+    font-size: .75rem;
+    font-weight: 800;
+}
+
+
+
+.logo-footer {
+    font-family: 'Monoton', sans-serif;
+    font-size: 2.25rem;
+    color: var(--primary-content);
+    letter-spacing: -.25rem;
 }
 
 .page-container-colcenter {
@@ -208,7 +242,6 @@ h1 {
     align-items: center;
     gap: 2rem;
     overflow-x: hidden;
-    flex-wrap: wrap;
 }
 
 .call-to-actions > div {
