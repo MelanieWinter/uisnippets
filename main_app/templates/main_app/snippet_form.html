@@ -1,16 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="page-container-colcenter">
+
         <div class="form-top-bar">
-            <div class="form-logo">UI</div>
-            <form action="" method="POST">
-            {% csrf_token %}
-                <div class="title-form">
-                    {{ form.title }} <!-- #id_title -->
+            <div class="ftb-left">
+                <div class="form-logo">UI</div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-title-user">
+                        <div class="form-title">
+                            {{ form.title }} <!-- #id_title -->
+                            <label for="{{ form.title.id_for_label }}" id="title-label"><i class="fa-solid fa-pencil"></i></label>
+                        </div> 
+                        <div class="form-user">Unknown User</div>
+                    </div>
+            </div>
+            <div class="ftb-right">
+                <div class="form-save">
+                    <input type="submit" value="Save" class="btn white-text" id="submit-btn">
+                </div>
+                <div class="form-avatar">
+                    <i class="fa-solid fa-user"></i>
                 </div>
             </div>
-
-        </form>
+        </div>
+                </form>
 
             <!-- ADD THIS INTO A MODAL WITH THE TAGS -->
             <!-- <div class="description-form">
