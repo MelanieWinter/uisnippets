@@ -16,7 +16,6 @@
             </div>
             <div class="ftb-right">
 
-
                 <button class="form-save">
                     <input type="submit" value="Save" class="btn white-text" id="submit-btn">
                 </button>
@@ -30,9 +29,16 @@
                 </button>
 
                 <dialog id="formModal">
+                    <div class="form-title">
+                        <label for="{{ form.title.id_for_label }}" id="title-label">Snippet Title</label>
+                        {{ form.title }} <!-- #id_title -->
+                    </div> 
                     <div class="form-description">
-                        <!-- <label for="{{ form.description.id_for_label }}" id="description-label">Description</label> -->
+                        <label for="{{ form.description.id_for_label }}" id="description-label">Snippet Description</label>
                         {{form.description}}
+                    </div>
+                    <div class="form-tags">
+                        
                     </div>
                     <button id="closeFormModal" type="button">Close</button>
                 </dialog>
@@ -69,15 +75,7 @@
             <iframe id="output"></iframe>
         </div>
 
-<!--
-        </div>
-        </form>
-        <div>
-            <label><i class="fa-solid fa-play"></i> Output</label>
-            <iframe id="output"></iframe>
-        </div>
-        
-        {% if object %}
+<!--    {% if object %}
             <h5>remove a tag</h5>
             <div class="tag-buttons">
                 {% if snippet.tags.count %}
@@ -197,9 +195,6 @@
             output.contentDocument.body.innerHTML = htmlVal + '<style>' + cssVal + '</style>'
             output.contentWindow.eval(jsVal)
         }
-
-        // const selectEl = document.getElementById('id_primary_code_type');
-        // M.FormSelect.init(selectEl)
     </script>
     
 {% endblock %}
