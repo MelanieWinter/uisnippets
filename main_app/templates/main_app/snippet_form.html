@@ -5,28 +5,43 @@
             <div class="ftb-left">
                 <div class="form-logo">UI</div>
                 <form action="" method="POST">
-                    {% csrf_token %}
-                    <div class="form-title-user">
-                        <div class="form-title">
-                            {{ form.title }} <!-- #id_title -->
-                            <label for="{{ form.title.id_for_label }}" id="title-label"><i class="fa-solid fa-pencil"></i></label>
-                        </div> 
-                        <div class="form-user">Unknown User</div>
-                    </div>
+                {% csrf_token %}
+                <div class="form-title-user">
+                    <div class="form-title">
+                        {{ form.title }} <!-- #id_title -->
+                        <label for="{{ form.title.id_for_label }}" id="title-label"><i class="fa-solid fa-pencil"></i></label>
+                    </div> 
+                    <div class="form-user">Unknown User</div>
+                </div>
             </div>
             <div class="ftb-right">
-                <div class="form-save">
+                <div class="form-description">
+                    <!-- <label for="{{ form.description.id_for_label }}" id="description-label">Description</label> -->
+                    {{form.description}}
+                </div>
+                <button class="form-save">
                     <input type="submit" value="Save" class="btn white-text" id="submit-btn">
-                </div>
-                <!-- <div class="form-heart">
+                </button>
+                <!-- <button class="form-heart">
                     <i class="fa-solid fa-heart"></i>
-                </div> -->
-                <div class="form-settings">
+                </button> -->
+                <button class="form-settings" id="openFormModal" type="button">
                     <i class="fa-solid fa-gear"></i>
-                </div>
-                <div class="form-avatar">
+                </button>
+
+                <dialog id="formModal">
+                    <div>
+                        <h2>Dialog Title</h2>
+                        <p>Your dialog content goes here.</p>
+                    </div>
+                    <!-- Dialog Buttons -->
+                    <button id="closeFormModal" type="button">Close</button>
+                </dialog>
+
+
+                <button class="form-avatar" type="button">
                     <i class="fa-solid fa-user"></i>
-                </div>
+                </button>
             </div>
         </div>
         <div class="form-iframes">
@@ -49,13 +64,11 @@
                 {{form.js_code}} <!-- id_js_code -->
             </div>
         </div>
-                </form>
 
-            <!-- ADD THIS INTO A MODAL WITH THE TAGS -->
-            <!-- <div class="description-form">
-                <label for="{{ form.description.id_for_label }}" id="description-label">Description</label>
-                {{form.description}}
-            </div> -->
+    </form>
+        <div class="form-output-iframe">
+            <iframe id="output"></iframe>
+        </div>
 
 <!--
         </div>
@@ -123,6 +136,16 @@
     </div> -->
 
     <script>
+        const openFormModal = document.getElementById('openFormModal');
+        const formModal = document.getElementById('formModal');
+        const closeFormModal = document.getElementById('closeFormModal');
+        openFormModal.addEventListener('click', () => {
+            formModal.showModal()
+        });
+        closeFormModal.addEventListener('click', () => {
+            formModal.close()
+        });
+
         // HTML
         const htmlEditor = CodeMirror.fromTextArea(document.getElementById("id_html_code"), {
             mode: "xml",

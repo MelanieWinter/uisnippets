@@ -38,7 +38,7 @@ def snippets_detail(request, snippet_id):
 
 class SnippetCreate(CreateView):
     model = Snippet
-    fields = '__all__'
+    fields = ['title', 'description', 'html_code', 'css_code', 'js_code']
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -12,7 +12,7 @@ class Tag(models.Model):
 
 class Snippet(models.Model):
     title = models.CharField(max_length=100, default='untitled')
-    description = models.CharField(max_length=500)
+    description = models.CharField(max_length=500, default='No description')
     html_code = models.TextField(default='<!-- html -->')
     css_code = models.TextField(default='/* css */')
     js_code = models.TextField(default='// js')
