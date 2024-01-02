@@ -496,6 +496,7 @@ h1 {
     font-size: .9rem;
     font-weight: 500;
     color: var(--copy);
+    padding-inline: 10px;
 }
 
 #title-label {
@@ -539,6 +540,11 @@ h1 {
 #submit-btn:hover {
     background: linear-gradient(to top left, var(--primary-dark), var(--primary-light));
     cursor: pointer;
+}
+
+.form-save {
+    outline: none;
+    border: none;
 }
 
 .form-iframes {
@@ -602,6 +608,19 @@ h1 {
     height: 14rem;
 }
 
+#formModal {
+    position: fixed;
+    padding: 3rem;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background: hsl(0 0% 100%/ 0.75);
+    backdrop-filter: blur(.5rem);
+    color: var(--primary-color);
+    border: 1px transparent var(--primary-color);
+    border-radius: 0.5rem;
+    z-index: 9999;
+}
 
 
 

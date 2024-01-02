@@ -15,26 +15,25 @@
                 </div>
             </div>
             <div class="ftb-right">
-                <div class="form-description">
-                    <!-- <label for="{{ form.description.id_for_label }}" id="description-label">Description</label> -->
-                    {{form.description}}
-                </div>
+
+
                 <button class="form-save">
                     <input type="submit" value="Save" class="btn white-text" id="submit-btn">
                 </button>
+
                 <!-- <button class="form-heart">
                     <i class="fa-solid fa-heart"></i>
                 </button> -->
+
                 <button class="form-settings" id="openFormModal" type="button">
                     <i class="fa-solid fa-gear"></i>
                 </button>
 
                 <dialog id="formModal">
-                    <div>
-                        <h2>Dialog Title</h2>
-                        <p>Your dialog content goes here.</p>
+                    <div class="form-description">
+                        <!-- <label for="{{ form.description.id_for_label }}" id="description-label">Description</label> -->
+                        {{form.description}}
                     </div>
-                    <!-- Dialog Buttons -->
                     <button id="closeFormModal" type="button">Close</button>
                 </dialog>
 
@@ -142,9 +141,22 @@
         openFormModal.addEventListener('click', () => {
             formModal.showModal()
         });
+
         closeFormModal.addEventListener('click', () => {
             formModal.close()
         });
+
+        formModal.addEventListener('click', e => {
+            const dialogDimensions = formModal.getBoundingClientRect()
+            if (
+                e.clientX < dialogDimensions.left ||
+                e.clientX > dialogDimensions.right ||
+                e.clientY < dialogDimensions.top ||
+                e.clientY > dialogDimensions.bottom
+            ) {
+                formModal.close()
+            }
+        })
 
         // HTML
         const htmlEditor = CodeMirror.fromTextArea(document.getElementById("id_html_code"), {
