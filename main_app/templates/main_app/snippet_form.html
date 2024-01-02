@@ -1,120 +1,109 @@
 {% extends 'base.html' %}
 {% block content %}
-    <!-- <h1>Add a Snippet</h1> -->
-    <!-- {% if object %}
-        <h1>Edit <span class="teal-text">{{ object.title }}</span></h1>
-    {% else %}
-        <h1>Add An Element</h1>
-    {% endif %} -->
-
-    <div class="whole-form-container">
-        <form action="" method="POST">
-        {% csrf_token %}
-        <div class="top-form-container">
-            <!-- #id_title -->
-            <div class="form-title">
-                <div>
-                <label for="{{ form.title.id_for_label }}" id="title-label">Title</label>
-                {{ form.title }}
-                </div>
-                <div>
-                    <label for="{{ form.description.id_for_label }}" id="description-label">Description</label>
-                    {{form.description}}
+    <div class="page-container-colcenter">
+        <div class="form-top-bar">
+            <div class="form-logo">UI</div>
+            <form action="" method="POST">
+            {% csrf_token %}
+                <div class="title-form">
+                    {{ form.title }} <!-- #id_title -->
                 </div>
             </div>
-            <div class="form-buttons">
-                <input type="submit" value="Submit" class="btn white-text" id="submit-btn">
-            </div>
-        </div>
-    
-        <div class="container">
-            <div class="left-c">
-                {% csrf_token %}
-                <!-- #id_html_code -->
-                <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
-                {{form.html_code}}
 
-                <!-- #id_css_code -->
-                <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
-                {{form.css_code}}
-
-                <!-- id_js_code -->
-                <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
-                {{form.js_code}}
-            </div>
         </form>
-            
-            <div class="right-c">
-                <div>
-                    <label><i class="fa-solid fa-play"></i> Output</label>
-                    <iframe id="output"></iframe>
-                </div>
-                
-                {% if object %}
-                    <h5>remove a tag</h5>
-                    <div class="tag-buttons">
-                        {% if snippet.tags.count %}
-                            {% for tag in snippet.tags.all %}
-                            <div>
-                                <form method="POST" action="{% url 'remove_tag' snippet.id tag.id %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="tag">{{tag.name}}</button>
-                                </form>
-                            </div>
-                            {% endfor %}
-                        {% else %}
-                            <h5>No Tags</h5>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <h5>assoc a tag</h5>
-                        <div class="tag-buttons">
-                            {% if tags_not_in_snippet %}
-                                {% for tag in tags_not_in_snippet %}
-                                    <form method="POST" action="{% url 'assoc_tag' snippet.id tag.id %}">
-                                        {% csrf_token %}
-                                        <button type="submit" class="tag">{{tag.name}}</button>
-                                    </form>
-                                {% endfor %}
-                            {% endif %}
-                        </div>
-                    </div>
 
-                    <div>
-                        <form method="POST" action="{% url 'add_tag' snippet.id %}">
-                            {% csrf_token %}
-                            {{ tag_form.as_p }}
-                            <button type="submit">Add Tag</button>
-                        </form>
-                    </div>
+            <!-- ADD THIS INTO A MODAL WITH THE TAGS -->
+            <!-- <div class="description-form">
+                <label for="{{ form.description.id_for_label }}" id="description-label">Description</label>
+                {{form.description}}
+            </div> -->
 
-                    <div class="vote-div">
-                        <form action="{% url 'add_vote' snippet.id %}" method="POST">
-                            {% csrf_token %}
-                            
-                            <button type="submit" name="vote_type" value="UP">
-                                <i class="fa-solid fa-circle-arrow-up"></i>
-                            </button>
-                            {{ upvote_count }}
-                            
-                            <button type="submit" name="vote_type" value="DOWN">
-                                <i class="fa-solid fa-circle-arrow-down"></i>
-                            </button>
-                            {{ downvote_count }}
-                        </form>
-                    </div>
-                {% endif %}
+            <!-- <div class="form-buttons">
+                <input type="submit" value="Submit" class="btn white-text" id="submit-btn">
+            </div> -->
+<!-- 
+        <div class="top">
+            {% csrf_token %} -->
+            <!-- #id_html_code -->
+            <!-- <label for="{{ form.html_code.id_for_label }}"><i class="fa-brands fa-html5"></i> HTML</label>
+            {{form.html_code}} -->
 
-            </div>
+            <!-- #id_css_code -->
+            <!-- <label for="{{ form.css_code.id_for_label }}"><i class="fa-brands fa-css3-alt"></i> CSS</label>
+            {{form.css_code}} -->
+
+            <!-- id_js_code -->
+            <!-- <label for="{{ form.js_code.id_for_label }}"><i class="fa-brands fa-js"></i> JS</label>
+            {{form.js_code}}
         </div>
-    </div>
+        </form>
+        <div>
+            <label><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+        
+        {% if object %}
+            <h5>remove a tag</h5>
+            <div class="tag-buttons">
+                {% if snippet.tags.count %}
+                    {% for tag in snippet.tags.all %}
+                    <div>
+                        <form method="POST" action="{% url 'remove_tag' snippet.id tag.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="tag">{{tag.name}}</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <h5>No Tags</h5>
+                {% endif %}
+            </div>
+            <div>
+                <h5>assoc a tag</h5>
+                <div class="tag-buttons">
+                    {% if tags_not_in_snippet %}
+                        {% for tag in tags_not_in_snippet %}
+                            <form method="POST" action="{% url 'assoc_tag' snippet.id tag.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="tag">{{tag.name}}</button>
+                            </form>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div> -->
+
+            <!-- <div>
+                <form method="POST" action="{% url 'add_tag' snippet.id %}">
+                    {% csrf_token %}
+                    {{ tag_form.as_p }}
+                    <button type="submit">Add Tag</button>
+                </form>
+            </div> -->
+
+            <!-- <div class="vote-div">
+                <form action="{% url 'add_vote' snippet.id %}" method="POST">
+                    {% csrf_token %}
+                    
+                    <button type="submit" name="vote_type" value="UP">
+                        <i class="fa-solid fa-circle-arrow-up"></i>
+                    </button>
+                    {{ upvote_count }}
+                    
+                    <button type="submit" name="vote_type" value="DOWN">
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </button>
+                    {{ downvote_count }}
+                </form>
+            </div>
+        {% endif %}
+        </div>
+    </div> -->
 
     <script>
         // HTML
         const htmlEditor = CodeMirror.fromTextArea(document.getElementById("id_html_code"), {
             mode: "xml",
             lineNumbers: true,
-            // theme: 'monokai',
             autoCloseTags: true,
             autoCloseBrackets: true,
             extraKeys: { "Ctrl-Space": "autocomplete" }
@@ -125,7 +114,6 @@
             mode: "css",
             lineNumbers: true,
             autoCloseBrackets: true,
-            // theme: 'monokai',
             extraKeys: { "Ctrl-Space": "autocomplete" }
         })
 
@@ -134,7 +122,6 @@
             mode: "javascript",
             lineNumbers: true,
             autoCloseBrackets: true,
-            // theme: 'monokai',
             extraKeys: { "Ctrl-Space": "autocomplete" }
         })
 

@@ -1,43 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="snippets" style="margin-block: 4vmin;">
+<div class="page-container-colcenter">
+    <div class="snippets">
+        {% for snippet in snippets %}
+            <!-- on hover/dropdown of votes and tags/comments? -->
+            <div class="snippet-preview">
+                <!-- <div class="all-buttons-container">
+                    <div class="tag-buttons">
+                        {% if snippet.tags.count %}
+                            {% for tag in snippet.tags.all %}
+                            <a href="{% url 'tags_detail' tag.id %}">
+                                <button class="tag">{{tag.name}}</button>
+                            </a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div> -->
 
-    {% for snippet in snippets %}
+                <!-- add enlarge button which opens a modal with details -->
+                <a href="{% url 'detail' snippet.id %}">
+                    <iframe class="preview" srcdoc="
+                        <html>
+                        <head>
+                            <style>{{ snippet.css_code }}</style>
+                        </head>
+                        <body>
+                            {{ snippet.html_code }}
+                            <script>{{ snippet.js_code }}</script>
+                        </body>
+                        </html>
+                    "></iframe>
+                </a>
+                <div class="snippet-bottom">
+                    <div class="snippet-bottom-first">
+                        <div class="avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div> 
+                        <a href="{% url 'detail' snippet.id %}">
+                            <div class="snippet-title-div">
+                                <p class="snippet-title-p">{{ snippet.title }}</p>
+                                <p class="snippet-user-p">Unknown User</p>
+                            </div>
+                        </a>
+                    </div>
 
-    <div class="snippet-preview">
-        <div class="all-buttons-container">
-            <div class="tag-buttons">
-                {% if snippet.tags.count %}
-                    {% for tag in snippet.tags.all %}
-                    <a href="{% url 'tags_detail' tag.id %}">
-                        <button class="tag">{{tag.name}}</button>
-                    </a>
-                    {% endfor %}
-                {% endif %}
+                    <!-- follow user -->
+                    <div class="snippet-bottom-menu">
+                        <p><i class="fa-solid fa-ellipsis"></i></p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-
-        <iframe class="preview" srcdoc="
-            <html>
-            <head>
-                <style>{{ snippet.css_code }}</style>
-            </head>
-            <body>
-                {{ snippet.html_code }}
-                <script>{{ snippet.js_code }}</script>
-            </body>
-            </html>
-        "></iframe>
-
-        <div class="details-button-container">
-            <a href="{% url 'detail' snippet.id %}" class="details-button"><div>{{ snippet.title }}</div></a>
-        </div>
+        {% endfor %}
     </div>
-
-    {% endfor %}
-
 </div>
 
 {% endblock %}

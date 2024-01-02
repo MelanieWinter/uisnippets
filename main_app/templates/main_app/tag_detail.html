@@ -1,15 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div>
+<div class="page-container-colcenter">
     <h1>Tag Details</h1>
-    
+    <p>{{ tag.name }}</p>
     <div>
-        <span>{{ tag.name }}</span>
-        <br>
-        <a href="{% url 'tags_update' tag.id %}">Edit</a>
-        <br>
-        <a href="{% url 'tags_delete' tag.id %}">Delete</a>
+        <a href="{% url 'tags_update' tag.id %}"><button>Edit</button></a>
+        <a href="{% url 'tags_delete' tag.id %}"><button>Delete</button></a>
     </div>
     
 </div>
